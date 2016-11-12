@@ -33,7 +33,7 @@ function ShoppingListCheckOffService () {
 	var service = this;
 
 	// initial item list
-	var items = ["10 cookies","10 chips","5 soft drinks","1 instant coffee"];
+	var items = ["10 cookies","10 chips","5 soft drinks","1 instant coffee","5 bottles of milk",];
 
 	// initial bought item list
 	var boughtItems = [];
