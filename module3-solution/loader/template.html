@@ -1,8 +1,8 @@
 <div class="loader form-group narrow-button">
   <ul>
-    <li ng-repeat="item in menu.found">
-      {{item.short_name}} {{ item.name }} {{item.description}}
-      <button ng-click="menu.removeItem({index: $index});" class="btn btn-primary">Don't want this one!</button>
+    <li ng-repeat="item in menu.items">
+      ({{item.short_name}}) {{ item.name }} - {{item.description}}
+      <button ng-click="menu.onRemove({index: $index});" class="btn btn-primary">Don't want this one!</button>
     </li>
   </ul>
   <!-- <span ng-if="menu.error()" class=error>ERROR!</span> -->

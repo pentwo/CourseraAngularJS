@@ -10,12 +10,12 @@ function FoundItemsDirective() {
 	var ddo = {
 		templateUrl: '/loader/template.html',
 		scope: {
-			narrowedItems: '<',
+			items: '<',
 			onRemove: '&'
 		},
-		// controller: NarrowItDownController,
-		// controllerAs: 'menu',
-		// bindToController: true
+		controller: NarrowItDownController,
+		controllerAs: 'menu',
+		bindToController: true
 	}
 
 	return ddo;
@@ -52,7 +52,7 @@ function MenuSearchService ($http) {
 		console.log(searchTerm);
 		return $http({
 					method: "GET",
-					url: "http://davids-restaurant.herokuapp.com/menu_items.json"
+					url: "https://davids-restaurant.herokuapp.com/menu_items.json"
 				}).then(function (result) {
 					var foundItems = [];
 
