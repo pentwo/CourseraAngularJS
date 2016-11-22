@@ -24,21 +24,27 @@ function FoundItemsDirective() {
 NarrowItDownController.$inject = ['MenuSearchService'];
 function NarrowItDownController (MenuSearchService){
 	var menu = this;
+	menu.found = [];
+	
 
 	menu.findItems = function () {
-		MenuSearchService.getMatchedMenuItems(menu.searchTerm)
-		.then(function (result){
-				menu.found = result
-				console.log(menu.found);
+		if (menu.searchTerm !== "" && menu.searchTerm !== undefined) {
+			MenuSearchService.getMatchedMenuItems(menu.searchTerm)
+			.then(function (result){
+				menu.found = result;
 			});
+
+		} else {
+			menu.found = [];
+		}
 	}
 
 	menu.removeItem = function (itemIndex) {
 		menu.found.splice(itemIndex, 1);
 	}
 
-	menu.error = function () {
-		return (menu.searchTerm === "" || menu.found ===[])
+	menu.errorHandler = function () {
+		return ( menu.items.length == 0)
 	};
 
 };
