@@ -1,5 +1,7 @@
-<a ui-sref="home">Home</a> &gt; 
-<a href="categories"><span>Categories</span></a> &gt; 
-<span>Menu Items</span>
+<ol class="breadcrumb">
+  <li class="breadcrumb-item"><a ui-sref="home">Home</a></li>
+  <li class="breadcrumb-item"><a ui-sref="categories">Categories</a></li>
+  <li class="breadcrumb-item active">Menu Items</li>
+</ol>
 
-<menu-items></menu-items>
+<menu-items items="itemList.menuItems.menu_items"></menu-items>

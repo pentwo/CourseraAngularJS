@@ -7,7 +7,7 @@ angular.module('Data')
 
 
 MenuDataService.inject = ['$http', 'ApiBaseUrl']
-function MenuDataService($http, ApiBaseUrl) {
+function MenuDataService($http, ApiBaseUrl ) {
 	var service = this;
 
 	service.getAllCategories = function () {
@@ -17,7 +17,6 @@ function MenuDataService($http, ApiBaseUrl) {
 				}).then(function (result){
 					var foundCategories = result.data;
 
-					console.log(foundCategories)
 					return foundCategories;
 				});
 	};
@@ -25,11 +24,10 @@ function MenuDataService($http, ApiBaseUrl) {
 	service.getItemsForCategory = function (categoryShortName) {
 		return $http ({
 				method: "GET",
-				url: ApiBaseUrl + '/menu_items.json?category={categoryShortName}' 
+				url: ApiBaseUrl + '/menu_items.json?category=' + categoryShortName
+				
 				}).then(function (result){
 					var foundItems = result.data;
-
-					console.log(foundItems)
 					return foundItems;
 				});
 	};
