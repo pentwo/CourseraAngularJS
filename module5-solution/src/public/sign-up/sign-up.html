@@ -1,0 +1,79 @@
+
+<fieldset ng-controller="RegistrationController as regCtrl" class="form-group container">
+
+	<H2>Registration</H2>
+	<form name='regForm' novaildate>
+		<div class="form-group row ">
+			<label for="firstName" class=" ">FIRST NAME</label>
+			<input type="text" name="firstName" placeholder="Your First Name"
+			class="form-control" 
+			ng-model="regCtrl.user.firstName"
+			ng-minlength="3"
+			required 
+			>
+			<p class="" ng-if="regForm.firstName.$invalid && regForm.firstName.$touched">
+				Your first name must be at least 3 characters long
+			</p>
+		</div>
+		<div class="form-group row">
+			<label for="lastName">LAST NAME</label>
+			<input type="text" name="lastName" placeholder="Your Last Name"
+			class="form-control" 
+			ng-model="regCtrl.user.lastName"
+			ng-minlength="3"
+			required
+			>
+			<p class="" ng-if="regForm.lastName.$invalid && regForm.lastName.$touched">
+				Your last name must be at least 3 characters long
+			</p>			
+		</div>
+		<div class="form-group row ng-class="{ 'has-error': regForm.email.$invalid }">
+			<label for="email">E-MAIL</label>		
+			<input type="email" name="email" placeholder="Your Email"
+			class="form-control" 
+			ng-model="regCtrl.user.email"
+			required
+			>
+			<p class="" ng-if=" regForm.email.$invalid &&  regForm.email.$touched">
+				Must be a valid email address: handle@domain format
+			</p>			
+		</div>
+		<div class="form-group row">
+			<label for="phone">CELL PHONE NUMBER</label>
+			<input type="tel" name="phone" placeholder="Your Mobile Phone No. ####-###-###"
+			class="form-control" 
+			ng-model="regCtrl.user.phone"
+			pattern="(\d{10})" 
+			required
+			>
+			<p class="" ng-if=" regForm.phone.$invalid &&  regForm.phone.$touched">
+				Must be a valid phone number: ####-###-###
+			</p>			
+		</div>
+		<div class="form-group row">
+			<label for="favMenuCategory">Favorite Menu</label>			
+			<input type="text" name="favMenuCategory" placeholder="Your Favorite Menu Catagory Number"
+			class="form-control" 
+			ng-model="regCtrl.user.favMenuCategory"
+			required
+			>
+<!-- 			<p class="" ng-if=" regForm.favMenuCategory.$panding.category">
+				Resolving
+			</p>
+			<p class="" ng-if=" regForm.favMenuCategory.$error.category && regForm.favMenuCategory.$touched">
+				Must be a valid Menu Category
+			</p>	 -->		
+		</div>
+			
+	<!-- 		<button
+				ng-disabled="regCtrl.$invalid"
+				ng-click="regCtrl.submit()">Submit</button> -->
+		<div>
+			<button ng-disabled="regForm.$invalid"
+					class="btn btn-secondary"
+					ng-click="regCtrl.submit()">Submit</button>
+		</div>
+
+	</form>
+
+</fieldset>
