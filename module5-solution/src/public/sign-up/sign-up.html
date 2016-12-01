@@ -44,7 +44,7 @@
 			<input type="tel" name="phone" placeholder="Your Mobile Phone No. ####-###-###"
 				class="form-control" 
 				ng-model="regCtrl.user.phone"
-				pattern="(\d{10})" 
+				pattern="(\d{4}-\d{3}-\d{3})" 
 				required
 				>
 			<div class="form-invalid" ng-if="regForm.phone.$touched">
