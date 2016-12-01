@@ -52,6 +52,7 @@ function categoryValidation ($q, $http, ApiPath) {
 > Reference 
 > 
 > * [Remotely Validate Email Using AngularJS and NodeJS](http://junerockwell.com/remotely-validate-email-using-angularjs-and-nodejs/)
+> * [Taming Forms in AngularJS 1.3 - yearofmoo.com](https://www.yearofmoo.com/2014/09/taming-forms-in-angularjs-1-3.html#6-0-asynchronous-validation-via-asyncvalidators)
 
 ###Data sharing cross route, controllers and services
 Solve by using custom factory `UserData` to storage data and iuject into controllers which need it.
