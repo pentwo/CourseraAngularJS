@@ -1,0 +1,50 @@
+
+<div ng-controller="UserInfoController as userCtrl" >
+	<!-- if not sign up yet, show link direct user to sign-up page -->
+	<div class="text-center" ng-show="!userCtrl.userExist">
+		<h2>Not Signed Up Yet.</h2>
+		<button class="btn btn-primary" ui-sref="public.signup" >Sign up Now!</button>
+	</div>	
+	<!-- if already sign-up, show user's infomation -->
+	<div ng-show="userCtrl.userExist">
+		<div id="member-info" class="container">
+			<H2>User Infomation</H2>
+			<table class="table table-bordered col-xs-10">
+			  <thead>
+			    <tr>
+			      <th>FIRST NAME</th>
+			      <th>LAST NAME</th>
+			      <th>E-MAIL</th>
+			      <th>MOBILE PHONE NUMBER</th>
+			      <th>FAVORITE MENU</th>
+			    </tr>
+			  </thead>
+			  <tbody>
+			    <tr>
+			      <td>{{userCtrl.user.firstName}}</td>
+			      <td>{{userCtrl.user.lastName}}</td>
+			      <td>{{userCtrl.user.email}}</td>
+			      <td>{{userCtrl.user.phone}}</td>
+			      <td>{{userCtrl.user.favMenuItems.category.name }}</td>
+			    </tr>
+			  </tbody>
+			</table>
+		</div>
+	</div>
+	
+	<!-- show user's favorite category menu items -->
+	<div ng-show="userCtrl.userExist">
+		<div class="container">
+		  <h2 id="menu-categories-title" class="text-center">
+		    {{ userCtrl.user.favMenuItems.category.name }} Menu
+		  </h2>
+		  <div class="text-center">
+		    {{ userCtrl.user.favMenuItems.category.special_instructions}}
+		  </div>
+
+		  <menu-item ng-repeat="menuItem in userCtrl.user.favMenuItems.menu_items"
+		             menu-item="menuItem">
+		  </menu-item>
+		</div>
+	</div>
+</div>

@@ -26,18 +26,6 @@ function MenuService($http, ApiPath) {
       return response.data;
     });
   };
-
-  service.checkFavCategory = function (categoryShortName) {
-    return $http.get(ApiPath + '/categories.json').then(function (response) {
-      for (var i = response.data.length - 1; i >= 0; i--) {
-        if (response.data[i].short_name === categoryShortName) {
-          return true;
-        }
-      }
-      return false;
-    });
-  };
-
 }
 
 

@@ -1,8 +1,9 @@
 
-<fieldset ng-controller="RegistrationController as regCtrl" class="form-group container">
+<fieldset ng-controller="RegistrationController as regCtrl" class="form-group container" >
 
-	<H2>Registration</H2>
-	<form name='regForm' novaildate>
+	
+	<form name='regForm' novaildate ng-hide="regCtrl.userData.alreadyMember">
+		<H2>Registration</H2>
 		<div class="form-group row ">
 			<label for="firstName" class=" ">FIRST NAME</label>
 			<input type="text" name="firstName" placeholder="Your First Name"
@@ -11,7 +12,7 @@
 			ng-minlength="3"
 			required 
 			>
-			<p class="" ng-if="regForm.firstName.$invalid && regForm.firstName.$touched">
+			<p class="form-invalid" ng-if="regForm.firstName.$invalid && regForm.firstName.$touched">
 				Your first name must be at least 3 characters long
 			</p>
 		</div>
@@ -23,7 +24,7 @@
 			ng-minlength="3"
 			required
 			>
-			<p class="" ng-if="regForm.lastName.$invalid && regForm.lastName.$touched">
+			<p class="form-invalid" ng-if="regForm.lastName.$invalid && regForm.lastName.$touched">
 				Your last name must be at least 3 characters long
 			</p>			
 		</div>
@@ -34,46 +35,66 @@
 			ng-model="regCtrl.user.email"
 			required
 			>
-			<p class="" ng-if=" regForm.email.$invalid &&  regForm.email.$touched">
+			<p class="form-invalid" ng-if=" regForm.email.$invalid &&  regForm.email.$touched">
 				Must be a valid email address: handle@domain format
 			</p>			
 		</div>
 		<div class="form-group row">
-			<label for="phone">CELL PHONE NUMBER</label>
+			<label for="phone">MOBILE PHONE NUMBER</label>
 			<input type="tel" name="phone" placeholder="Your Mobile Phone No. ####-###-###"
-			class="form-control" 
-			ng-model="regCtrl.user.phone"
-			pattern="(\d{10})" 
-			required
-			>
-			<p class="" ng-if=" regForm.phone.$invalid &&  regForm.phone.$touched">
-				Must be a valid phone number: ####-###-###
-			</p>			
+				class="form-control" 
+				ng-model="regCtrl.user.phone"
+				pattern="(\d{10})" 
+				required
+				>
+			<div class="form-invalid" ng-if="regForm.phone.$touched">
+				<p ng-if=" regForm.phone.$error.pattern">
+					Must be a valid phone number: ####-###-###
+				</p>
+				<p ng-if="regForm.phone.$error.required">
+					This is required.
+				</p>
+			</div>
 		</div>
 		<div class="form-group row">
-			<label for="favMenuCategory">Favorite Menu</label>			
+			<label for="favMenuCategory">FAVORITE MENU</label>			
 			<input type="text" name="favMenuCategory" placeholder="Your Favorite Menu Catagory Number"
 			class="form-control" 
 			ng-model="regCtrl.user.favMenuCategory"
 			required
+			category-validation
 			>
-<!-- 			<p class="" ng-if=" regForm.favMenuCategory.$panding.category">
-				Resolving
-			</p>
-			<p class="" ng-if=" regForm.favMenuCategory.$error.category && regForm.favMenuCategory.$touched">
-				Must be a valid Menu Category
-			</p>	 -->		
-		</div>
 			
-	<!-- 		<button
-				ng-disabled="regCtrl.$invalid"
-				ng-click="regCtrl.submit()">Submit</button> -->
+			
+			<div class="form-invalid" ng-if="regForm.favMenuCategory.$touched">
+				<p ng-if="regForm.favMenuCategory.$pending">
+					Resolving...
+				</p>
+				<p ng-if=" regForm.favMenuCategory.$error.categoryValidation">
+					No such menu number exists
+				</p>				
+			
+				<p ng-if="regForm.favMenuCategory.$error.required">
+					This is required.
+				</p>
+			</div>
+		</div>
 		<div>
 			<button ng-disabled="regForm.$invalid"
-					class="btn btn-secondary"
+					class="btn btn-primary"
 					ng-click="regCtrl.submit()">Submit</button>
 		</div>
 
 	</form>
 
+
+	<div id="member-info" class="container" ng-show="regCtrl.userData.alreadyMember">
+		<h2 class="text-center">Your information has been saved.</h2>
+
+
+	</div>
+
 </fieldset>
+
+
+

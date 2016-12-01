@@ -119,7 +119,10 @@ h3.menu-item-title {
 
 /* REGISTRATION FORM PAGE */
 
-
+.form-invalid {
+  font-style: italic;
+  background: gray;
+}
 
 
 /* END REGISTRATION FORM PAGE */

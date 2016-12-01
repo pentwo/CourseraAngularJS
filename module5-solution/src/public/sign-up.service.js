@@ -2,33 +2,26 @@
 "use strict";
 
 angular.module('public')
-.service('SignUpService', SignUpService);
+.service('SignUpService', SignUpService)
+.factory('UserData', UserData);
 
-SignUpService.$inject = ['$http', 'ApiPath'];
-function SignUpService ($http, ApiPath) {
+SignUpService.$inject = ['ApiPath', 'UserData', 'MenuService'];
+function SignUpService (ApiPath, UserData, MenuService) {
 	var service = this;
-	var userDatabase = [];
 
-	// service.checkFavCategory = function (category) {
-	//     var config = {};
-	//     if (category) {
-	//       config.params = {'category': category};
-	//     }
-
-	// 	return $http.get(ApiPath + '/menu_items.json', config)
-	// 				.then(function (response) {
-	// 					return response.data;
-	// 				}, function (error) {
-	// 					return error.data
-	// 				}
-	// 	);
-	// };
 
 	service.addNewUser = function (user) {
-		userDatabase.push(user);
-		console.log(userDatabase);
+		UserData.push(user);
+		UserData.alreadyMember = true;
 	};
 
 }
+
+UserData.$inject = [];
+function UserData () {
+	var alreadyMember = false;
+	return [];
+}
+
 
 })();
